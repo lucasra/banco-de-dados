@@ -12,5 +12,4 @@ aluno::~aluno(void)
 
 void aluno::imprime()
 {
-
 }
