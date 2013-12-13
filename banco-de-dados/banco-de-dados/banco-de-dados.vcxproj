@@ -76,6 +76,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="aluno.h" />
+    <ClInclude Include="curso.h" />
+    <ClInclude Include="turma.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aluno.cpp" />
+    <ClCompile Include="curso.cpp" />
+    <ClCompile Include="turma.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
