@@ -84,19 +84,155 @@ void insert_curso()
 
 
 
-void remove_aluno()
-{
+/* 
+ * Funcao responsavel por remover um aluno do vetor alunos. Recebe como argumento
+ * o inteiro Compara que eh utilizado para localizar o aluno no vetor e o char op
+ * que indica com que informacao o Compara esta comparando. Caso op seja igual a 'm'
+ * a funcao esta localizando o aluno pelo seu numero de matricula, caso op seja igual
+ * a 't'  funcao esta localizando o aluno pela sua turma.
+ */
 
+void
+remove_aluno(int Compara, char op)
+{
+	int localizado = 0;
+
+	for (int i = 0; i < a; i++)
+	{
+		if (op == 'm')
+		{
+			if (Compara == alunos[i].Matricula)
+			{
+				localizado = 1;
+			}
+		}
+
+		if (op == 't')
+		{
+			if (Compara == alunos[i].CodTurma)
+			{
+				localizado = 1;
+			}
+		}
+		
+		if (localizado == 1)
+		{
+			 for (int j = i; j < a - 1; j++)
+			 {
+				 alunos[j].Matricula = alunos[j+1].Matricula;
+				 alunos[j].Cpf = alunos[j+1].Cpf;
+				 alunos[j].CodTurma = alunos[j+1].CodTurma;
+				 alunos[j].Telefone = alunos[j+1].Telefone;
+				 alunos[j].position = alunos[j+1].position;
+
+				 strcpy(alunos[j+1].NomeAluno, alunos[j].NomeAluno);
+				 strcpy(alunos[j+1].Email, alunos[j].Email);
+				 strcpy(alunos[j+1].Rua, alunos[j].Rua);
+				 strcpy(alunos[j+1].Bairro, alunos[j].Bairro);
+				 strcpy(alunos[j+1].Cidade, alunos[j].Cidade);
+			 }
+			 break;
+		}
+	}
+	
+	a--;
 }
 
-void remove_turma()
-{
 
-}
-void remove_curso()
-{
+/* 
+ * Funcao responsavel por remover uma turma do vetor turmas. Recebe como argumento
+ * o inteiro Compara que eh utilizado para localizar a turma no vetor e o char op
+ * que indica com que informacao o Compara esta comparando. Caso op seja igual a 't'
+ * a funcao esta localizando a turma pelo seu codigo de curso, caso op seja igual
+ * a 't' a funcao esta localizando a turma pelo codigo de turma. Ao remover uma turma
+ * os alunos pertencentes a turma tambem sao removidos.
+ */
 
+void
+remove_turma(int Compara, char op)
+{
+	int localizado = 0;
+
+	for (int i = 0; i < t; i++)
+	{
+		if (op == 't')
+		{
+			if (Compara == turmas[i].CodTurma)
+			{
+				localizado = 1;
+			}
+		}
+		
+		if (op == 'c')
+		{
+			if (Compara == turmas[i].CodCurso)
+			{
+				localizado = 1;
+			}
+		}
+
+
+		if (localizado == 1)
+		{
+			 for (int j = i; j < t - 1; j++)
+			 {
+				 turmas[j].CodTurma = turmas[j+1].CodTurma;
+				 turmas[j].Data = turmas[j+1].Data;
+				 turmas[j].CodCurso = turmas[j+1].CodCurso;
+				 turmas[j].position = turmas[j+1].position;
+
+				 strcpy(turmas[j+1].NomeTurma, turmas[j].NomeTurma);
+			 }
+			 break;
+		}
+	}
+	
+	t--;
+
+	for (int i = 0; i < a; i++)
+	{
+		if (Compara == alunos[i].CodTurma)
+		{ 
+			remove_aluno(Compara, 't');
+		}
+	}
 }
+
+
+/* 
+ * Funcao responsavel por remover um curso do vetor cursos. Recebe como argumento
+ * o inteiro Compara que eh utilizado para localizar o curso no vetor. Ao remover  
+ * um curso as turmas pertencentes ao curso tambem  sao removidas.
+ */
+
+void remove_curso(int Compara)
+{
+	for (int i = 0; i < c; i++)
+	{
+		if (Compara == cursos[i].CodCurso)
+		{
+			 for (int j = i; j < c - 1; j++)
+			 {
+				 cursos[j].CodCurso = cursos[j+1].CodCurso;
+				 cursos[j].position = cursos[j+1].position;
+
+				 strcpy(cursos[j+1].NomeCurso, cursos[j].NomeCurso);
+			 }
+			 break;
+		}
+	}
+	
+	c--;
+
+	for (int i = 0; i < t; i++)
+	{
+		if (Compara == turmas[i].CodCurso)
+		{ 
+			remove_turma(Compara, 'c');
+		}
+	}
+}
+
 
 void consulta_aluno(int cod)
 {
