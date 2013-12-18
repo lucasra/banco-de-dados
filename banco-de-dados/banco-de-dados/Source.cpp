@@ -69,17 +69,55 @@ int find_curso(int cod)
 
 void insert_aluno()
 {
-
-		
+	cout << "Numero de matricula do aluno: "<<a<<endl;
+	alunos[a].Matricula=a;
+	fflush(stdin); // LIMPAR O CACHE DE ENTRADA;
+	cout << "\nDigite o nome do aluno a ser inserido: ";
+	getline(cin, alunos[a].NomeAluno);
+	cout << "Digite o cpf do aluno: ";
+	cin >> alunos[a].Cpf;
+	cout << "Digite o email do aluno: ";
+	cin >> alunos[a].Email;
+	fflush(stdin); // LIMPAR O CACHE DE ENTRADA;
+	cout << "Digite a rua do aluno: ";
+	getline(cin, alunos[a].Rua);
+	cout << "Digite o bairro do aluno: ";
+	getline(cin, alunos[a].Bairro);
+	cout << "Digite a cidade do aluno: ";
+	getline(cin, alunos[a].Cidade);
+	fflush(stdin); // LIMPAR O CACHE DE ENTRADA;
+	cout << "Digite o telefone do aluno:";
+	cin >> alunos[a].Telefone;
+	cout << "Informe o codigo da turma a qual esse aluno pertence :";
+	cin >>	alunos[a].CodTurma;
+	alunos[a].position = a;
+	a++;
 }
 void insert_turma()
 {
-
-	
+	fflush(stdin);
+	cout << "codigo desta turma: "<<t<<endl;;
+	turmas[t].CodTurma = t;
+	fflush(stdin);
+	cout << "\nDigite o nome da turma a ser inserida: ";
+	getline(cin, turmas[t].NomeTurma);
+	cout << "Digite a data da criacao dessa turma (DDMMAAAA): ";
+	cin >> turmas[t].Data;
+	cout << "Informe o codigo do curso a que esta turma pertence :";
+	cin  >>turmas[t].CodCurso;
+	turmas[t].position = t;
+	t++;
 }
 void insert_curso()
 {
-
+	cout << "Pronto para criar um novo curso? Siga as instrucoes:\n";
+	cout << "Codigo do novo curso: "<<c<<endl;;
+	cursos[c].CodCurso = c;
+	fflush(stdin);  // LIMPAR O CACHE DE ENTRADA;
+	cout<<"Digite o nome do novo curso:"<<endl;
+	getline(cin, cursos[c].NomeCurso);
+	cursos[c].position = c;
+	c++;
 }
 
 
