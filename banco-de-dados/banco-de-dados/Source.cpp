@@ -274,16 +274,83 @@ void remove_curso(int Compara)
 
 void consulta_aluno(int cod)
 {
-
+        system("cls");
+	char nome[20];
+	int i,pos = -1;
+	cout << "Digite o nome completo do aluno a ser encontrado: ";
+	fflush(stdin);
+	gets_s(nome);
+	for(i = 0 ; i < a ; i++)
+	{
+		if(strcmp(nome,alunos[a].NomeAluno) == 0)
+			pos = i;
+	}
+	if(pos != -1)
+	{
+		 cout << "\n\nDados do aluno pequisado: ";
+         cout << "\n\nNome: " << alunos[a].NomeAluno << "\nCPF: ";
+         cout << alunos[a].Cpf << "\nCodigo da turma: " << alunos[a].CodTurma;
+         cout << "\nEmail: " <<alunos[a].Email;
+         cout << "\n\nRua: " << alunos[a].Rua << "\nBairro: " << alunos[a].Bairro;
+         cout << "\nTelefone: " << alunos[a].Telefone;
+         cout << " \nCidade: " << alunos[a].Cidade << "\n\n"; 
+	}
+	else
+        {
+		cout << "\n\nAluno não cadastrado!!!"; 
+        }
 }
 
 void consulta_turma(int cod)
 {
-
+        system("cls");
+	char turma[20];
+	int i,pos = -1;
+	cout << "Digite o codigo da turma a ser encontrado: ";
+	fflush(stdin);
+	gets_s(turma);
+	for(i = 0 ; i < t ; i++)
+	{
+		if(strcmp(curso,turmas[i].CodTurma) == 0)
+			pos = i;
+	}
+	if(pos != -1)
+	{
+                cout << "\n\nDados da turma pequisado: ";
+                cout << "\n\nNome da turma: " << turmas[t].NomeTurma << "\nData da criação da turma:";
+                cout <<  turmas[t].Data << "\nCodigo do curso: " << turmas[t].CodCurso;
+                cout << "\n\n"; 
+	}
+	else
+        {
+		cout << "\n\nTurma não cadastrado!!!";
+        }
 }
 void consulta_curso(int cod)
-{
 
+{
+        system("cls");
+	char curso[20];
+	int i,pos = -1;
+	cout << "Digite o codigo do curso a ser encontrado: : ";
+	fflush(stdin);
+	gets_s(curso);
+	for(i = 0 ; i < c ; i++)
+	{
+		if(strcmp(curso,cursos[c].CodCurso) == 0)
+			pos = i;
+	}
+	if(pos != -1)
+	{
+                 cout << "\n\nDados do curso pequisado: ";
+                 cout << "\n\nCodigo do curso: " << cursos[c].CodCurso << "\nNome do curso:";
+                 cout << cursos[c].NomeCurso;
+                 cout << "\n\n"; 
+	}
+	else
+        {
+		cout << "\n\nCurso não cadastrado!!!";
+        }
 }
 
 
